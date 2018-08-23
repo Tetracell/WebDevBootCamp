@@ -17,6 +17,7 @@ var campgroundSchema = new mongoose.Schema({
 
 var Campground = mongoose.model("Campground", campgroundSchema);
 
+
 // Campground.create({
 //     name: "Salmon Creek",
 //     image : "http://www.hikinginbigsur.com/hikepix/salmoncreekmain.jpg",
@@ -42,10 +43,12 @@ var Campground = mongoose.model("Campground", campgroundSchema);
 //   res.render("landing");
 // });
 
+// SHOW - shoes more info about one campground
 app.get("/campgrounds/:id", function(req, res){
     //find the campgroundf with provided ID
     //render show template with that campground
-    res.send("This will one day be the show page!");
+    //res.send("This will one day be the show page!");
+    res.render("show");
 })
 
 // INDEX - show all campgrounds
@@ -54,7 +57,7 @@ app.get("/campgrounds", function(req, res){
         if(err){
             console.log(err);
         } else {
-            res.render("campgrounds",{campgrounds:allCampgrounds})
+            res.render("index",{campgrounds:allCampgrounds})
         }
     })
 });
@@ -74,13 +77,13 @@ app.post("/campgrounds", function(req, res){
     let newCampground = {name: name, image: image};
     
     //Create new campground and save to DB
-        Campground.create(newCampground, function(err, newCreation){
-        if(err){
-            console.log(err);
-        } else {
-            res.redirect("/campgrounds");
-        }
-    });
+    //     Campground.create(newCampground, function(err, newCreation){
+    //     if(err){
+    //         console.log(err);
+    //     } else {
+    //         res.redirect("/campgrounds");
+    //     }
+    // });
 });
 
 app.listen(process.env.PORT, process.env.IP, function(){
