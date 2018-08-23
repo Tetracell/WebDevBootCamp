@@ -1,0 +1,16 @@
+function average (array){
+    var grades = array;
+    var average;
+    var total = 0;
+    for (var i = 0; i < grades.length; i++){
+        total += grades[i];
+    }
+    average = total / grades.length;
+    return Math.round(average);
+}
+
+var scores = [90,98,89,100,100,86,94];
+console.log(average(scores));
+
+var scores2 = [40,65,77,82,80,54,73,63,95,49]
+console.log(average(scores2));
