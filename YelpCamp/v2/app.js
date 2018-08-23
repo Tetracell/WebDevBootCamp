@@ -48,8 +48,14 @@ app.get("/campgrounds/:id", function(req, res){
     //find the campgroundf with provided ID
     //render show template with that campground
     //res.send("This will one day be the show page!");
-    res.render("show");
-})
+    Campground.findById(req.params.id, function(err, foundCampground){
+       if(err){
+           console.log(err);
+       } else {
+           res.render("show", {campground: foundCampground});
+       }
+    });
+});
 
 // INDEX - show all campgrounds
 app.get("/campgrounds", function(req, res){
@@ -57,9 +63,9 @@ app.get("/campgrounds", function(req, res){
         if(err){
             console.log(err);
         } else {
-            res.render("index",{campgrounds:allCampgrounds})
+            res.render("index",{campgrounds:allCampgrounds});
         }
-    })
+    });
 });
 
 //NEW - show form to create new campground
