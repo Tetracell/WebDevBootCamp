@@ -3,9 +3,11 @@ let app         = express();
 let bodyParser  = require("body-parser");
 let mongoose    = require("mongoose");
 let Campground  = require("./models/campground");
+var seedDB      = require("./seeds");
 //let Comments    = require("./models/comments");
 //let User        = require("./models/user");
 
+seedDB();
 mongoose.connect("mongodb://localhost/yelp_camp");
 
 app.use(bodyParser.urlencoded({extended: true}));
