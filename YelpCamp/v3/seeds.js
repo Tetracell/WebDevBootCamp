@@ -3,7 +3,7 @@ let Campground = require("./models/campground");
 let Comment = require("./models/comment")
 
 
-var data = [{
+let data = [{
         name: "Cloud's Rest",
         image: "https://cascadeclimbers.com/plab/data/502/best08.JPG",
         description: "A nice mountain."
@@ -44,8 +44,8 @@ function seedDB() {
                             console.log(err);
                         }
                         else {
-                            Campground.comments.push(comment);
-                            Campground.save();
+                            data.comments.push(comment);
+                            data.save();
                         }
                     });
                 }
