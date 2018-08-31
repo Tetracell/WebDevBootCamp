@@ -15,7 +15,7 @@ let data = [{
     },
     {
         name: "Strawberry Park",
-        image: "http://www.wickedgoodtraveltips.com/wp-content/uploads/2014/10/strawberry_park_steamboat.jpg",
+        image: "https://media-cdn.tripadvisor.com/media/photo-s/04/5b/2a/10/strawberry-park-resort.jpg",
         description: "More or less an RV city. Not so much a campground as it is a summer camp. Wonderful nonetheless."
     }
 ];
