@@ -20,7 +20,7 @@ app.get("/", function(req, res) {
             console.log(err);
         }
         else {
-            res.render("index", { campgrounds: allCampgrounds });
+            res.render("campgrounds/index", { campgrounds: allCampgrounds });
         }
     });
 });
@@ -28,7 +28,7 @@ app.get("/", function(req, res) {
 //NEW - show form to create new campground
 app.get("/campgrounds/new", function(req, res) {
     console.log("FARTTTTTT");
-    res.render("new");
+    res.render("campgrounds/new");
 });
 
 // INDEX - show all campgrounds
@@ -38,7 +38,7 @@ app.get("/campgrounds", function(req, res) {
             console.log(err);
         }
         else {
-            res.render("index", { campgrounds: allCampgrounds });
+            res.render("campgrounds/index", { campgrounds: allCampgrounds });
         }
     });
 });
@@ -52,13 +52,10 @@ app.get("/campgrounds/:id", function(req, res) {
             console.log(err);
         }
         else {
-            res.render("show", { campground: foundCampground });
+            res.render("campgrounds/show", { campground: foundCampground });
         }
     });
 });
-
-
-
 
 
 //CREATE - add new campground to DB
@@ -80,6 +77,15 @@ app.post("/campgrounds", function(req, res) {
             res.redirect("/campgrounds");
         }
     });
+});
+
+//====================
+//COMMENTS ROUTES
+//====================
+
+app.get("/campgrounds/:id/comments/new", function(req, res){
+    //res.send("This will be the comment form!");
+    res.render("comments/new");
 });
 
 app.listen(process.env.PORT, process.env.IP, function() {
