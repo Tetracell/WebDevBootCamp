@@ -3,6 +3,7 @@ let app = express();
 let bodyParser = require("body-parser");
 let mongoose = require("mongoose");
 let Campground = require("./models/campground");
+let Comment = require("./models/comment");
 var seedDB = require("./seeds");
 //let Comments    = require("./models/comments");
 //let User        = require("./models/user");
@@ -102,13 +103,16 @@ app.post("/campgrounds/:id/comments", function(req, res){
         if(err){
             console.log(err);
             res.redirect("/campgrounds");
-        } else {
+        } else { 
+            //create new comment
             Comment.create(req.body.comment, function(err, comment){
                 if(err){
                     console.log(err);
                 } else {
-                    campgrounds.comments.push(comment);
+                    //connect new comment to campground
+                    campground.comments.push(comment);
                     campground.save();
+                    //redirect campground to show page
                     res.redirect("/campgrounds/" + campground._id);
                 }
             });
@@ -116,9 +120,9 @@ app.post("/campgrounds/:id/comments", function(req, res){
     });    
 });  
               
-    //create new comment
-    //connect new comment to campground
-    //redirect campground to show page
+
+
+  
 //====================
 
 
