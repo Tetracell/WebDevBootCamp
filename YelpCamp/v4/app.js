@@ -85,8 +85,40 @@ app.post("/campgrounds", function(req, res) {
 
 app.get("/campgrounds/:id/comments/new", function(req, res){
     //res.send("This will be the comment form!");
-    res.render("comments/new");
+    Campground.findById(req.params.id, function(err, campground){
+        if(err){
+            console.log(err);
+            console.log("Error here in the comment route.");
+        } else {
+            res.render("comments/new", {campground: campground});
+        }
+    });
+    //res.render("comments/new");
 });
+
+app.post("/campgrounds/:id/comments", function(req, res){
+    //lookup campground using ID
+    Campground.findById(req.params.id, function(err, campground){
+        if(err){
+            console.log(err);
+            res.redirect("/campgrounds");
+        } else {
+            Comment.create(req.body.comment, function(err, comment){
+                if(err){
+                    console.log(err);
+                } else {
+                    campgrounds.comments.push(comment);
+                    campground.save();
+                    res.redirect("/campgrounds/" + campground._id);
+                }
+            });
+        }
+    });    
+});  
+              
+    //create new comment
+    //connect new comment to campground
+    //redirect campground to show page
 //====================
 
 
