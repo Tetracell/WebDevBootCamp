@@ -87,7 +87,10 @@ app.get("/campgrounds/:id/comments/new", function(req, res){
     //res.send("This will be the comment form!");
     res.render("comments/new");
 });
+//====================
 
+
+//==Server Listen==
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("Server has started");
     console.log(process.env.PORT);
