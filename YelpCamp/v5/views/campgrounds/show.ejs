@@ -22,10 +22,11 @@
                 <div class="text-right">
                     <a class="btn btn-success" href="/campgrounds/<%= campground._id %>/comments/new">Add New Comment</a>
                 </div>
+                <hr>
                 <% campground.comments.forEach(function(comment){ %>
                     <div class="row">
                         <div class="col-md-12">
-                            <strong><%= comment.author %></strong> <!-- This is my own touch, i'm sure this should be done differently -->
+                            <strong><%= comment.author %></strong> <!-- This is my own touch, i'm sure this should be done differently -->  
                             <span class="pull-right">10 days ago</span>
                             <p>
                                 <%= comment.text %> 
