@@ -25,6 +25,8 @@ app.use(passport.session());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+//Routes ----------------------
+
 app.get("/", function(req, res){
     res.render("home");
 })
@@ -32,6 +34,8 @@ app.get("/", function(req, res){
 app.get("/secret", function(req, res){
     res.render("secret");
 });
+
+// Auth routes
 
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("Server has started....");
