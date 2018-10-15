@@ -9,8 +9,18 @@ let express                 = require("express"),
 mongoose.connect("mongodb://localhost/auth_demo_app");
 
 
+
 let app = express();
 app.set('view engine', 'ejs');
+
+app.use(require("express-session")({
+    secret: "This is a secret phrase?",
+    resave: false,
+    saveUnititialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.get("/", function(req, res){
     res.render("home");
