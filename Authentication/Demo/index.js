@@ -34,7 +34,7 @@ app.get("/", function(req, res) {
 });
 
 app.get("/secret", function(req, res) {
-    res.render("secret");
+    res.render("secret"); // I don't think anything is preventing me from getting here without a login yet.
 });
 
 // Auth routes
@@ -69,8 +69,6 @@ app.post("/login", passport.authenticate("local",{
     successRedirect:"/secret",
     failureRedirect:"/login"}),
         function(req, res){
-            
-    
 });
 
 app.listen(process.env.PORT, process.env.IP, function() {
