@@ -66,10 +66,17 @@ app.get("/login", function(req, res){
     res.render("login");
 })
 
+//middleware
 app.post("/login", passport.authenticate("local",{
     successRedirect:"/secret",
     failureRedirect:"/login"}),
         function(req, res){
+});
+
+//logout route
+app.get("/logout", function(req, res) {
+    //res.send("Ok, i will log out out. Eventually...")
+    req.logout();
 });
 
 app.listen(process.env.PORT, process.env.IP, function() {
