@@ -34,7 +34,8 @@ app.get("/", function(req, res) {
 });
 
 app.get("/secret", function(req, res) {
-    res.render("secret"); // I don't think anything is preventing me from getting here without a login yet.
+    res.render("secret"); // I don't think anything is preventing me from getting here without a login yet. UPDATE : Will come from the middleware
+                            // that checks status of "isLoggedIn"
 });
 
 // Auth routes
