@@ -77,6 +77,7 @@ app.post("/login", passport.authenticate("local",{
 app.get("/logout", function(req, res) {
     //res.send("Ok, i will log out out. Eventually...")
     req.logout();
+    res.redirect("/");
 });
 
 app.listen(process.env.PORT, process.env.IP, function() {
