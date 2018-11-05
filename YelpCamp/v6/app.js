@@ -21,7 +21,7 @@ app.use(express.static(__dirname + "/public"));
 
 //PASSPORT CONFIGURATION
 app.use(require("express-session")({
-    secret:"Dankbutts",
+    secret: "Dankbutts",
     resave: false,
     saveUninitialized: false
 }));
@@ -147,10 +147,22 @@ app.post("/campgrounds/:id/comments", function(req, res) {
 // show register form
 app.get("/register", function(req, res) {
     res.render("register");
-})
+});
 
 //handle sign up logic
-
+app.post("/register", function(req, res) {
+    //res.send("Signing you up...");
+    let newUser = new User({ username: req.body.username });
+    User.register(newUser, req.body.password, function(err, user){
+        if(err){
+            console.log(err);
+            return res.render("register")
+        }
+        Passport.authenticate("local"(req, res, function(){
+            res.redirect("campgrounds");
+        }))
+    });
+});
 
 //====================
 
