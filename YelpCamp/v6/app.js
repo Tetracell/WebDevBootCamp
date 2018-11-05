@@ -156,11 +156,11 @@ app.post("/register", function(req, res) {
     User.register(newUser, req.body.password, function(err, user){
         if(err){
             console.log(err);
-            return res.render("register")
+            return res.render("register");
         }
-        Passport.authenticate("local"(req, res, function(){
+        Passport.authenticate("local")(req, res, function(){
             res.redirect("campgrounds");
-        }))
+        });
     });
 });
 
