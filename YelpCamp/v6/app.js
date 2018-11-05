@@ -159,7 +159,7 @@ app.post("/register", function(req, res) {
             return res.render("register");
         }
         Passport.authenticate("local")(req, res, function(){
-            res.redirect("campgrounds");
+            res.redirect("/campgrounds");
         });
     });
 });
