@@ -142,7 +142,14 @@ app.post("/campgrounds/:id/comments", function(req, res) {
     });
 });
 
+//AUTH ROUTES
 
+// show register form
+app.get("/register", function(req, res) {
+    res.render("register");
+})
+
+//handle sign up logic
 
 
 //====================
