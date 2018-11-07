@@ -28,7 +28,7 @@ app.use(require("express-session")({
 
 app.use(Passport.initialize());
 app.use(Passport.session());
-Passport.use(new LocalStrategy(User.authenticate));
+Passport.use(new LocalStrategy(User.authenticate()));
 Passport.serializeUser(User.serializeUser());
 Passport.deserializeUser(User.deserializeUser());
 
@@ -158,7 +158,9 @@ app.post("/register", function(req, res) {
             console.log(err);
             return res.render("register");
         }
+        console.log("I have registered this user");
         Passport.authenticate("local")(req, res, function(){
+            console.log("Redirecting to /campgrounds");
             res.redirect("/campgrounds");
         });
     });
@@ -173,15 +175,19 @@ app.get("/login", function(req, res) {
 app.post("/login", Passport.authenticate("local", 
     {
         successRedirect: "/campgrounds",
-        failureRedirect: "/login"
+        failureRedirect: "/failure"
     }), function(req, res) {
-    
 });
 
 //logout route
 app.get("/logout", function(req, res) {
     req.logout();
     res.redirect("/campgrounds");
+});
+
+//failure route
+app.get("/failure", function(req, res) {
+    res.send("This failed");
 });
 
 //====================
