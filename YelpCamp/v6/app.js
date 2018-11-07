@@ -166,7 +166,7 @@ app.post("/register", function(req, res) {
 
 // show login form
 app.get("/login", function(req, res) {
-    
+    res.render("login");
 });
 
 // handling login logic
@@ -176,13 +176,13 @@ app.post("/login", Passport.authenticate("local",
         failureRedirect: "/login"
     }), function(req, res) {
     
-})
+});
 
 //logout route
 app.get("/logout", function(req, res) {
     req.logout();
     res.redirect("/campgrounds");
-})
+});
 
 //====================
 
